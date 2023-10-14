@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="peso">Peso:</string>
+    <string name="indice_de_masa_corporal">INDICE DE MASA CORPORAL</string>
+    <string name="en_kilogramos">En Kilogramos</string>
+    <string name="altura">Altura:</string>
+    <string name="en_metros">En metros</string>
+    <string name="calcular_imc">CALCULAR IMC</string>
+    <string name="todo">TODO</string>
+    <string name="eliminar_datos">ELIMINAR DATOS</string>
+    <string name="imc">IMC:</string>
+    <string name="descripcion">Descripcion</string>
+    <string name="su_peso_ideal">Su peso ideal</string>
+    <string name="todos">TODO</string>
+    <string name="radiobutton">RadioButton</string>
+    <string name="femenino">Femenino</string>
+    <string name="button">Button</string>
+</resources>
