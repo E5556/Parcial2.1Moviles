@@ -12,11 +12,16 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static double IVA = 0.19;
     private EditText peso, altura;
     private Button calcular,eliminar;
     private TextView imc,descripcion,pesoalturarecomendado,miBoton;
     private Intent intent;
 
+
+    public static double getIVA() {
+        return IVA;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,69 +64,35 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
-
     }
+
+    public static double getProduct(double veces, double multiplicador) {
+        double H = 1;
+        if (multiplicador == H)
+            return veces;
+        else
+            return getProduct(veces, multiplicador -1) + veces;
+    }
+
+
+
 
     public void operar(View view)
     {
-        RadioButton radioButton1 = findViewById(R.id.radioButton);
-        RadioButton radioButton2 = findViewById(R.id.radioButton2);
-
-
-
-
-        double npeso=Double.parseDouble(peso.getText().toString());
-        double naltura=Double.parseDouble(altura.getText().toString());
-
-        double idealpesohom = ((naltura*100)-100)*0.90;
-        double idealpesomuj = ((naltura*100)-100)*0.85;
-
-        if (radioButton1.isChecked()){
-            pesoalturarecomendado.setText("peso ideal Mujer: " +String.format("%.2f",idealpesomuj));
-
-        }
-        if (radioButton2.isChecked()){
-            pesoalturarecomendado.setText("peso ideal Hombre: " +String.format("%.2f",idealpesohom));
-
-        }
-
-
-
-        double resultadoimc = npeso/(naltura*naltura);
-
-        imc.setText("IMC: " +String.format("%.2f",resultadoimc));
-
-
-        if (resultadoimc<18.5) {
-            descripcion.setText("Bajo Peso");
-
-        }
-        else
-        if (resultadoimc>=18.5 && resultadoimc<=24.9)
-            descripcion.setText("Peso Normal");
-        else
-        if (resultadoimc>=25 && resultadoimc<=29.9)
-            descripcion.setText("Sobrepeso");
-        else
-        if (resultadoimc>=30 && resultadoimc<=34.9)
-            descripcion.setText("Obesidad I");
-        else
-        if (resultadoimc>=35 && resultadoimc<=39.9)
-            descripcion.setText("Obesidad II");
-
-        else
-        if (resultadoimc>=40 && resultadoimc<=49.9)
-            descripcion.setText("Obesidad III");
-        else
-        if (resultadoimc>50)
-            descripcion.setText("Obesidad IV");
-
+        double npeso=ParseStringtoDouble(peso.getText().toString());
+        double naltura=ParseStringtoDouble(altura.getText().toString());
+        double idealpesohom = getProduct(npeso,naltura);
+        pesoalturarecomendado.setText("Total Bruto: " +String.format("%.2f",idealpesohom));
+        double resultadoimc =  getProduct( IVA, idealpesohom);
+        imc.setText("Impuesto del IVA: " +String.format("%.2f",resultadoimc));
+        double resultadosuma = resultadoimc+idealpesohom;
+        descripcion.setText("Total Bruto + IVA: "+String.format("%.2f",resultadosuma));
     }
+
+    public double ParseStringtoDouble(String str){
+        return Double.parseDouble(str);
+    }
+
     public void borrar(View v)
     {
         peso.setText("");

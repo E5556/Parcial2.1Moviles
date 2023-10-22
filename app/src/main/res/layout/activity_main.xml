@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#3586F5"
     android:orientation="vertical"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textView2"
@@ -13,10 +14,11 @@
         android:layout_height="86dp"
         android:layout_marginTop="16dp"
         android:gravity="center"
-        android:text="@string/indice_de_masa_corporal"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:text="FACTURACION"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
         android:textColor="#673AB7"
-        tools:ignore="TextSizeCheck" />
+        tools:ignore="TextSizeCheck"
+        tools:text="FACTURACION" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,12 +27,13 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="wrap_content"
+            android:layout_width="78dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/peso"
+            android:text="Precio Unitario"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="Precio Unitario" />
 
         <EditText
             android:id="@+id/txtpeso"
@@ -39,10 +42,11 @@
             android:layout_weight="1"
             android:autofillHints=""
             android:ems="10"
-            android:hint="@string/en_kilogramos"
+            android:hint="En pesos"
             android:inputType="numberDecimal"
-            android:textColorHint="#8D6E63"
+            android:textColorHint="#700E0C0D"
             tools:ignore="VisualLintTextFieldSize,TouchTargetSizeCheck" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -55,9 +59,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/altura"
+            android:text="Cantidad"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="Cantidad" />
 
         <EditText
             android:id="@+id/txtaltura"
@@ -66,10 +71,23 @@
             android:layout_weight="1"
             android:autofillHints=""
             android:ems="10"
-            android:hint="@string/en_metros"
+            android:hint="En Unidades"
             android:inputType="numberDecimal"
-            android:textColorHint="#8D6E63"
+            android:textColorHint="#700E0C0D"
             tools:ignore="VisualLintTextFieldSize,TouchTargetSizeCheck" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="81dp"
+        tools:ignore="TextSizeCheck">
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            tools:ignore="UselessParent" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -85,7 +103,7 @@
             android:layout_weight="1"
             android:ellipsize="marquee"
             android:onClick="operar"
-            android:text="@string/calcular_imc"
+            android:text="Totalizar"
             tools:ignore="ButtonStyle,VisualLintButtonSize" />
 
         <Button
@@ -103,72 +121,38 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="81dp"
-        tools:ignore="TextSizeCheck">
-
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            tools:ignore="UselessParent">
-
-            <RadioButton
-                android:id="@+id/radioButton2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Masculino"
-                tools:ignore="VisualLintButtonSize" />
-
-            <RadioButton
-                android:id="@+id/radioButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/femenino"
-                tools:ignore="VisualLintButtonSize" />
-
-        </RadioGroup>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
         android:layout_height="443dp"
         android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtideal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/txtimc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/imc"
             android:textSize="24sp" />
 
         <TextView
             android:id="@+id/txtdescripcion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/descripcion"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/txtideal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/su_peso_ideal"
             android:textSize="24sp" />
 
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="match_parent"
-            android:layout_height="303dp"
+            android:layout_height="426dp"
+            android:background="#3887F7"
+            android:backgroundTint="#3485F4"
             android:contentDescription="@string/todos"
-            app:srcCompat="@drawable/imc" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Recomendaciones"
-            tools:ignore="VisualLintButtonSize" />
+            android:cropToPadding="true"
+            android:scaleType="centerCrop"
+            android:visibility="visible"
+            app:srcCompat="@drawable/img" />
 
     </LinearLayout>
 
@@ -177,6 +161,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Facturar"
+            tools:ignore="VisualLintButtonSize"
+            tools:text="Facturar" />
     </LinearLayout>
 
 </LinearLayout>
